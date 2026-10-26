@@ -938,10 +938,12 @@ void BK4819_SetCompander(const unsigned int mode)
     // mode 3 .. TX and RX
 
     const uint16_t r31 = BK4819_ReadRegister(BK4819_REG_31);
+    const uint16_t r28 = BK4819_ReadRegister(BK4819_REG_28);
 
     if (mode == 0)
     {   // disable
         BK4819_WriteRegister(BK4819_REG_31, r31 & ~(1u << 3));
+        BK4819_WriteRegister(BK4819_REG_28, r28 & ~(1u << 8));
         return;
     }
 
